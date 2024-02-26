@@ -22,4 +22,6 @@ public interface StudentDAO {
     boolean studentExistsByName(String name);
 
     Student checkInStudentByName(String name);
+
+    void excuseStudentsCheckIn();
 }

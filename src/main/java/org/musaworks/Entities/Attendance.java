@@ -8,11 +8,13 @@ public class Attendance {
     private int studentId;
 
     private Date dateAttended;
+    private Boolean excuseDate;
 
-    public Attendance(int attendanceId, int studentId, Date dateAttended) {
+    public Attendance(int attendanceId, int studentId, Date dateAttended, boolean excuseDate) {
         this.attendanceId = attendanceId;
         this.studentId = studentId;
         this.dateAttended = dateAttended;
+        this.excuseDate = excuseDate;
     }
 
     public int getAttendanceId() {
@@ -37,5 +39,13 @@ public class Attendance {
 
     public void setDateAttended(Date dateAttended) {
         this.dateAttended = dateAttended;
+    }
+
+    public Boolean isExcuseDate() {
+        return excuseDate;
+    }
+
+    public void setExcuseDate(Boolean excuseDate) {
+        this.excuseDate = excuseDate;
     }
 }

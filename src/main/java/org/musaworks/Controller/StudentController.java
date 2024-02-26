@@ -53,4 +53,9 @@ public class StudentController {
     public List<String> checkInStudents(@RequestBody List<CheckInRequest> checkInRequests){
         return studentService.checkInStudents(checkInRequests);
     }
+
+    @PostMapping("/excuseAllStudents")
+    public void excuseAllStudents(){
+        studentService.excuseAllStudents();
+    }
 }

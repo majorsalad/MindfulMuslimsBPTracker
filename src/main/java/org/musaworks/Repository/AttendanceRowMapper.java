@@ -12,7 +12,7 @@ public class AttendanceRowMapper implements RowMapper<Attendance> {
 
     @Override
     public Attendance mapRow(ResultSet rs, int rowNum) throws SQLException {
-        return new Attendance(rs.getInt("attendance_id"),rs.getInt("student_id"),rs.getDate("date_attended"));
+        return new Attendance(rs.getInt("attendance_id"),rs.getInt("student_id"),rs.getDate("date_attended"),rs.getBoolean("excuse_date"));
     }
 
 }

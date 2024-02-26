@@ -28,6 +28,10 @@ public class StudentService {
         return studentRepository.getStudentIdByName(name);
     }
 
+    public void excuseAllStudents(){
+        studentRepository.excuseStudentsCheckIn();
+    }
+
     public void addPointsByName(String name, int addedPoints) {
         int studentId = getStudentIdByName(name);
         double pointsToAdd = addedPoints + (addedPoints * totalBonus(studentId));

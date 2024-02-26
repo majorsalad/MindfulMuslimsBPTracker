@@ -144,12 +144,32 @@ public class StudentRepository implements StudentDAO {
         String checkInQuery = """
                     INSERT INTO attendance (student_id, date_attended) VALUES (?, ?)
                 """;
-        // java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
+//        java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
         Date currentDate = new Date(System.currentTimeMillis());
-//        LocalDate localDate = LocalDate.of(2024, 2, 17);
+//        LocalDate localDate = LocalDate.of(2024, 4, 6);
 //        Date specificDate = Date.valueOf(localDate);
 
         jdbcTemplate.update(checkInQuery, student.getStudentId(), currentDate);
         return student;
+    }
+
+    @Override
+    public void excuseStudentsCheckIn(){
+        String sql = """
+                    SELECT * FROM student;
+                """;
+
+        List<Student> students = jdbcTemplate.query(sql, studentRowMapper);
+
+        for(Student student : students){
+            String excuseQuery = """
+                    INSERT INTO attendance (student_id, date_attended, excuse_date) VALUES (?, ?, ?)
+                """;
+
+            LocalDate localDate = LocalDate.of(2024, 2, 24);
+            Date excuseDate = Date.valueOf(localDate);
+
+            jdbcTemplate.update(excuseQuery, student.getStudentId(), excuseDate, true);
+        }
     }
 }
